@@ -49,7 +49,7 @@ while j < itr_max:
             for  f in French.iloc[i]:
                 count[(e,f)] =count[(e,f)] + t[(e,f)]/s_total[e]
                 total[f] = total[f] + t[(e,f)]/s_total[e]
-    "estimate probabilities:"
+    "estimate new probabilities:"
     for i in range(0,len(French)):      
         for f in French.iloc[i]:
             for  e in English.iloc[i]:
@@ -57,6 +57,7 @@ while j < itr_max:
                     t[(e,f)]=0
                 else:    
                     t[(e,f)] = count[(e,f)]/total[f]              
-for (e, f), val in t.items():
-    if val > 0.9:
-        print("{} {}\t{}".format(e, f, val))
+    "Show tuples with probability greater than 0.9 :"
+    for (e, f), val in t.items():
+        if val > 0.9:
+            print("{} {}\t{}".format(e, f, val))
